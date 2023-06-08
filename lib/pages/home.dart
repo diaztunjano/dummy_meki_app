@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,8 +7,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
+      appBar: appBar(),
+      body: const Center(
+        child: Text(
           'Recepción',
           style: TextStyle(
             fontSize: 20.0,
@@ -15,19 +17,34 @@ class HomePage extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        backgroundColor: Colors.white,
-        elevation: 0.8,
-        centerTitle: true,
-        leading: Container(
-          margin: const EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            color: Colors.grey[100],
-          ),
+      ),
+    );
+  }
+
+  AppBar appBar() {
+    return AppBar(
+      title: const Text(
+        'Recepción',
+        style: TextStyle(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
         ),
       ),
-      body: const Center(
-        child: Text('Home Page'),
+      backgroundColor: Colors.white,
+      elevation: 0.8,
+      centerTitle: true,
+      leading: Container(
+        margin: const EdgeInsets.all(10.0),
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
+        child: SvgPicture.asset(
+          'assets/icons/Arrow-Left.svg',
+          height: 20,
+          width: 20,
+        ),
       ),
     );
   }
