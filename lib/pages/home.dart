@@ -7,15 +7,51 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBar(),
-        body: const Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ProveedorSelector(),
-            // BultosCounter(),
-            // FacturasSelector()
-          ],
-        ));
+      appBar: appBar(),
+      body: const Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ProveedorSelector(),
+          // BultosCounter(),
+          // FacturasSelector()
+        ],
+      ),
+      bottomNavigationBar: bottomButton(),
+    );
+  }
+
+  Container bottomButton() {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 30),
+      // top border width
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        border: Border(
+          top: BorderSide(width: 0.8, color: Colors.grey),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            style: TextButton.styleFrom(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
+              backgroundColor: Colors.blue[700],
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+            ),
+            onPressed: () {
+              // Acción del botón
+            },
+            child: const Text('Imprimir etiqueta',
+                style: TextStyle(fontSize: 22.0)),
+          ),
+        ],
+      ),
+    );
   }
 
   AppBar appBar() {
