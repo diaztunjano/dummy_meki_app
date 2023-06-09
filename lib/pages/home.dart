@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../widgets/bultos_counter.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -8,13 +10,16 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
-      body: const Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ProveedorSelector(),
-          // BultosCounter(),
-          // FacturasSelector()
-        ],
+      body: const Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ProveedorSelector(),
+            CounterWidget()
+            // FacturasSelector()
+          ],
+        ),
       ),
       bottomNavigationBar: bottomButton(),
     );
