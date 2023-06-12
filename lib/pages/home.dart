@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../widgets/bultos_counter.dart';
+import '../widgets/facturas_selector.dart';
+import '../widgets/proveedor_selector.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,13 +14,15 @@ class HomePage extends StatelessWidget {
       appBar: appBar(),
       body: const Align(
         alignment: Alignment.topCenter,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ProveedorSelector(),
-            CounterWidget()
-            // FacturasSelector()
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ProveedorSelector(),
+              CounterWidget(),
+              FacturasSelector(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: bottomButton(),
@@ -62,7 +66,7 @@ class HomePage extends StatelessWidget {
   AppBar appBar() {
     return AppBar(
       title: const Text(
-        'Recepción',
+        'Recepcióne',
         style: TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.bold,
@@ -85,45 +89,5 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class ProveedorSelector extends StatefulWidget {
-  const ProveedorSelector({super.key});
-
-  @override
-  State<ProveedorSelector> createState() => _ProveedorSelectorState();
-}
-
-class _ProveedorSelectorState extends State<ProveedorSelector> {
-  // Variables
-  final _provedoresList = ["Proveedor 1", "Proveedor 2", "Proveedor 3"];
-  // Selected Proveedor:
-  String? _selectedProveedor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey[400]!, width: 1),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: DropdownButtonHideUnderline(
-          child: DropdownButton(
-              value: _selectedProveedor,
-              isExpanded: true,
-              hint: const Text('Proveedor'),
-              items: _provedoresList
-                  .map((e) => DropdownMenuItem(
-                        value: e,
-                        child: Text(e),
-                      ))
-                  .toList(),
-              onChanged: (value) => setState(() {
-                    _selectedProveedor = value;
-                  })),
-        ));
   }
 }
